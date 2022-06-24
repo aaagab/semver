@@ -74,7 +74,7 @@ def semver(
                     if build is not None:
                         dy_groupdicts[version]["build"]="+{}".format(build)
                     if pre is not None:
-                        dy_groupdicts[version]["pre_release"]="-{}".format(pre),
+                        dy_groupdicts[version]["pre_release"]="-{}".format(pre)
 
 
             if major not in dys:

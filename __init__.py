@@ -2,6 +2,6 @@
 # authors: Gabriel Auger
 # name: semver
 # licenses: MIT 
-__version__= "1.0.0"
+__version__= "1.0.1"
 
 from .dev.semver import semver, NotSemanticVersion

@@ -4,6 +4,7 @@ if __name__ == "__main__":
     from pprint import pprint
     import importlib
     import os
+    import re
     import sys
     direpa_script=os.path.dirname(os.path.realpath(__file__))
     direpa_script_parent=os.path.dirname(direpa_script)
@@ -75,3 +76,5 @@ if __name__ == "__main__":
     results=pkg.semver(versions, get_groupdicts=True, flatten=True, no_duplicates=True)
     pprint(results)
     print()
+
+    print(re.match(pkg.get_reg_semver(), "1.2.3").groupdict())

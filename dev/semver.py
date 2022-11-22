@@ -7,21 +7,8 @@ import re
 class NotSemanticVersion(Exception):
         pass
 
-def semver(
-    versions,
-    flatten=False,
-    no_duplicates=False,
-    get_groupdicts=False,
-):
-    consts=dict(
-        build="[build]",
-        end="[end]",
-        int="[int]",
-        pre="[pre]",
-        str="[str]",
-    )
-
-    rule=r"""
+def get_reg_semver():
+    return r"""
     ^
         (?P<major>0|[1-9]\d*)\.
         (?P<minor>0|[1-9]\d*)\.
@@ -41,6 +28,22 @@ def semver(
         )?
     $
     """.replace(" ", "").replace("\n", "")
+
+def semver(
+    versions,
+    flatten=False,
+    no_duplicates=False,
+    get_groupdicts=False,
+):
+    consts=dict(
+        build="[build]",
+        end="[end]",
+        int="[int]",
+        pre="[pre]",
+        str="[str]",
+    )
+
+    rule=get_reg_semver()
     
     dys=dict()
     dy_count=dict()

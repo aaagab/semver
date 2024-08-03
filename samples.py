@@ -77,4 +77,17 @@ if __name__ == "__main__":
     pprint(results)
     print()
 
-    print(re.match(pkg.get_reg_semver(), "1.2.3").groupdict())
+    reg=re.match(pkg.get_reg_semver(), "1.2.3")
+    if reg is not None:
+        print(reg.groupdict())
+        print()
+
+    print("Test Semver class:")
+    try:
+        pkg.SemVer("not-a-version")
+    except pkg.NotSemanticVersion as e:
+        print("Error syntax '{}'".format(e))
+        print()
+
+    sv=pkg.SemVer("1.2.3-alpha+build")
+    pprint(vars(sv))

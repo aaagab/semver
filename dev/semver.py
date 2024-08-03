@@ -9,7 +9,8 @@ class NotSemanticVersion(Exception):
 
 class SemVer():
     def __init__(self, version:str):
-        reg=re.match(get_reg_semver(), version)
+        self.version: str =version
+        reg=re.match(get_reg_semver(), self.version)
         self.major: int
         self.minor: int
         self.patch: int

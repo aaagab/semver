@@ -14,18 +14,24 @@ class SemVer():
         self.major: int
         self.minor: int
         self.patch: int
-        self.pre: str | None
-        self.build: str | None
+        self.pre: str
+        self.build: str
         if reg:
             dy_reg=reg.groupdict()
             self.major=int(dy_reg["major"])
             self.minor=int(dy_reg["minor"])
             self.patch=int(dy_reg["patch"])
+            
             self.pre=dy_reg["prerelease"]
-            if self.pre is not None:
+            if self.pre is None:
+                self.pre=""
+            else:
                 self.pre=f"-{self.pre}"
+
             self.build=dy_reg["buildmetadata"]
-            if self.build is not None:
+            if self.build is None:
+                self.build=""
+            else:
                 self.build=f"+{self.build}"
         else:
             raise NotSemanticVersion(version)
